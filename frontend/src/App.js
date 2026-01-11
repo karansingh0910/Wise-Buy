@@ -1,25 +1,34 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
-import LoadingSteps from "./components/LoadingSteps";
+import LoadingSteps from "./LoadingSteps";
 
-export default function App() {
+function App() {
   const [query, setQuery] = useState("");
   const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // ✅ Vercel ENV se API URL lena
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const searchProducts = async () => {
     try {
       setError("");
       setLoading(true);
 
-      const res = await fetch(
-        `http://localhost:5000/api/search?q=${query}`
-      );
+      // ✅ safety: agar ENV missing ho
+      if (!API_URL) {
+        throw new Error("API_URL missing");
+      }
+
+      const res = await fetch(`${API_URL}/api/search?q=${query}`);
+
+      if (!res.ok) {
+        throw new Error("API not responding");
+      }
 
       const data = await res.json();
-      setProducts(data.products);
-
+      setProducts(data.products || []);
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -39,34 +48,36 @@ export default function App() {
 
         <div className="search-box">
           <input
-            placeholder="Search mobile, laptop, AC..."
+            className="input"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search product..."
           />
-          <button onClick={searchProducts}>Search</button>
+
+          <button className="btn" onClick={searchProducts}>
+            Search
+          </button>
         </div>
 
         {error && <p className="error">{error}</p>}
 
         {products.length > 0 && (
-          <>
-            <h2 className="best-title">Best deals for you</h2>
+          <div className="results">
+            <h2 className="best-deals">Best deals for you</h2>
 
-            <div className="results">
-              {products.map((p, i) => (
-                <div className="product-card" key={i}>
-                  <div className="tag">{p.category}</div>
-
-                  <h3>{p.name}</h3>
-                  <div className="price">₹{p.price.toLocaleString()}</div>
-
-                  <p className="highlight">⭐ {p.highlight}</p>
-                </div>
-              ))}
-            </div>
-          </>
+            {products.map((p, idx) => (
+              <div className="product-card" key={idx}>
+                <p className="category">{p.category}</p>
+                <h3 className="name">{p.name}</h3>
+                <p className="price">₹{p.price}</p>
+                <p className="highlight">⭐ {p.highlight}</p>
+              </div>
+            ))}
+          </div>
         )}
       </div>
     </div>
   );
 }
+
+export default App;
