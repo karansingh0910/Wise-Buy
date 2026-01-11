@@ -1,5 +1,8 @@
 # WiseBuy 🔍💡  
 AI-Powered Product Search & Deal Comparison Platform
+## 🔗 Live Demo
+Frontend: https://wise-buy-iota.vercel.app  
+Backend API: https://wisebuy-api-kd08.onrender.com
 
 ## 🚀 Features
 - Search products like Mobile / Laptop / AC etc.
