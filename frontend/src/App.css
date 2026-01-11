@@ -1,0 +1,126 @@
+.page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: radial-gradient(circle at top, #dbeafe, #f8fafc);
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.glass-card {
+  width: min(520px, 92vw);
+  border-radius: 26px;
+  padding: 26px 22px;
+
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.title {
+  font-size: 42px;
+  margin: 0;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.subtitle {
+  margin-top: 6px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.search-box {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.search-box button {
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #6366f1, #3b82f6);
+  color: white;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.search-box button:hover {
+  transform: scale(1.03);
+  opacity: 0.95;
+}
+
+.error {
+  margin-top: 15px;
+  color: red;
+  font-weight: bold;
+}
+
+.best-title {
+  margin-top: 24px;
+  font-size: 22px;
+  font-weight: 800;
+  color: #374151;
+}
+
+.results {
+  margin-top: 16px;
+  display: grid;
+  gap: 14px;
+}
+
+.product-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  padding: 16px 18px;
+  text-align: left;
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(99, 102, 241, 0.12);
+  color: #4f46e5;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.product-card h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 900;
+  color: #16a34a;
+  margin-top: 6px;
+}
+
+.highlight {
+  margin-top: 10px;
+  color: #6b7280;
+  font-size: 13px;
+}
